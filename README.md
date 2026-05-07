@@ -47,16 +47,16 @@ Whether you are dealing with stress, anxiety, sleep issues, relationship problem
 
 The LifeTrack chatbot can help you with:
 
-- 😰 Stress & Overwhelm
-- 😟 Anxiety & Panic
-- 😢 Sadness & Depression
-- 😔 Loneliness & Isolation
-- 😴 Sleep Issues & Insomnia
-- 😤 Anger & Frustration
-- 💔 Relationship & Family Problems
-- 📚 Work & Study Pressure
-- 💪 Motivation & Confidence
-- 🆘 Crisis Support (with Indian helpline numbers)
+-  Stress & Overwhelm
+-  Anxiety & Panic
+-  Sadness & Depression
+-  Loneliness & Isolation
+-  Sleep Issues & Insomnia
+-  Anger & Frustration
+-  Relationship & Family Problems
+-  Work & Study Pressure
+-  Motivation & Confidence
+-  Crisis Support (with Indian helpline numbers)
 
 ---
 
