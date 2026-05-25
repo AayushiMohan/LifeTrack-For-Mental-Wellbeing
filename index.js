@@ -3,7 +3,7 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const User = require("./models/User");
-const chatRouter = require("./routes/chat");  // ← connects your chat.js router
+const chatRouter = require("./routes/chat");  // connects chat.js router
 
 const app = express();
 app.use(cors());
@@ -12,7 +12,6 @@ app.use(express.json());
 mongoose.connect("mongodb://localhost:27017/lifetrack")
   .then(() => console.log("MongoDB Connected ✔"))
   .catch(err => console.log("MongoDB Error:", err));
-// ──────────────────────────────────────────────────────────
 
 // TEST ROUTE
 app.get("/", (req, res) => {
@@ -46,7 +45,7 @@ app.post("/login", async (req, res) => {
   res.status(200).json({ message: "Login successful ✅" });
 });
 
-// CHAT ROUTE ← this is the key line that connects your chat.js
+// CHAT ROUTE, this is the key line that connects chat.js
 app.use("/chat", chatRouter);
 
 app.listen(3000, () => {
