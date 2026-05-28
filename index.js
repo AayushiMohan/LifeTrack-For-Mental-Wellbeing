@@ -45,7 +45,7 @@ app.post("/login", async (req, res) => {
   res.status(200).json({ message: "Login successful ✅" });
 });
 
-// CHAT ROUTE, this is the key line that connects chat.js
+// CHAT ROUTE, connects chat.js 
 app.use("/chat", chatRouter);
 
 app.listen(3000, () => {
