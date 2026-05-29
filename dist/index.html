@@ -856,6 +856,21 @@
   });
 </script>
 
+<script>
+  const isLoggedIn = localStorage.getItem("loggedIn");
+  const userEmail = localStorage.getItem("userEmail");
+  const navCta = document.getElementById("nav-cta");
+
+  if (isLoggedIn && navCta) {
+    navCta.textContent = "👤 " + userEmail;
+    navCta.href = "#";
+    navCta.onclick = () => {
+      localStorage.clear();
+      window.location.reload();
+    };
+  }
+</script>
+
 <!-- ── HERO ── -->
 <section id="home" class="hero">
   <img class="hidden md:block" src="lifestyleshopify.png" alt="LifeTrack">
@@ -1120,11 +1135,10 @@
 <footer id="contact" class="footer">
   <div class="footer-inner">
     <div class="footer-divider"></div>
-    <p class="footer-quote">"Your circle shapes your destiny — choose wisely. 🌿"</p>
+    <p class="footer-quote">"Your circle shapes your destiny — choose wisely.🌿"</p>
     <div class="footer-links">
       <a href="mailto:aayushimohanpersonal@gmail.com">📧 Email</a>
-      <a href="https://www.instagram.com/yourusername" target="_blank">📸 Instagram</a>
-      <p>Stay and Grow🌿</p>
+      <a href="https://www.instagram.com/heyyousmile___" target="_blank">📸 Instagram</a>
     </div>
     <p class="footer-copy">© 2026 LifeTrack. Made with ♥ by A.</p>
   </div>
@@ -1136,7 +1150,7 @@
 <div class="contact-popup" id="contact-popup">
   <div class="contact-popup-header">Get in touch</div>
   <a href="mailto:aayushimohanpersonal@gmail.com">📧 Email Us</a>
-  <a href="https://www.instagram.com/yourusername" target="_blank">📸 Instagram</a>
+  <a href="https://www.instagram.com/heyyousmile___" target="_blank">📸 Instagram</a>
 </div>
 
 <!-- ── FLOATING CHAT BUTTON ── -->
