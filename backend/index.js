@@ -9,9 +9,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/lifetrack")
-.then(() => console.log("MongoDB Connected ✔"))
-.catch(err => console.log("MongoDB Error:", err));
+mongoose.connect("mongodb+srv://aayushi_atlas:Lifetrack01@cluster0.9dxdn5l.mongodb.net/lifetrack?retryWrites=true&w=majority&appName=Cluster0")
+  .then(() => console.log("MongoDB Connected ✔"))
+  .catch(err => console.log("MongoDB Error:", err));
 
 app.get("/", (req, res) => res.send("LifeTrack running 🚀"));
 
