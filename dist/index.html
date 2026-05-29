@@ -824,9 +824,11 @@
     <li><a href="#about">About</a></li>
     <li><a href="#features">Features</a></li>
     <li><a href="#contact">Contact</a></li>
-    <a href="login.html" class="px-4 py-1.5 text-sm rounded-full border border-white hover:bg-white hover:text-black transition">
-  Login / Sign Up
-</a>
+    <li>
+      <a id="nav-cta" href="login.html" class="px-4 py-1.5 text-sm rounded-full border border-white hover:bg-white hover:text-black transition">
+        Login / Sign Up
+      </a>
+    </li>
   </ul>
 
   <button class="hamburger" id="menu-btn" aria-label="Menu">
@@ -839,12 +841,13 @@
   <a href="#about">About</a>
   <a href="#features">Features</a>
   <a href="#contact">Contact</a>
-  <a href="login.html" style="color:var(--amber); font-weight:600;">Login / Sign Up</a>
+  <a id="nav-cta-mobile" href="login.html" style="color:var(--amber); font-weight:600;">Login / Sign Up</a>
 </div>
 
 <script>
   const menuBtn = document.getElementById("menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
+
   menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("open"));
 
   window.addEventListener("scroll", () => {
@@ -854,20 +857,24 @@
   document.querySelectorAll('.mobile-menu a').forEach(a => {
     a.addEventListener('click', () => mobileMenu.classList.remove('open'));
   });
-</script>
 
-<script>
+  // Login state check
   const isLoggedIn = localStorage.getItem("loggedIn");
   const userEmail = localStorage.getItem("userEmail");
   const navCta = document.getElementById("nav-cta");
+  const navCtaMobile = document.getElementById("nav-cta-mobile");
 
-  if (isLoggedIn && navCta) {
-    navCta.textContent = "👤 " + userEmail;
-    navCta.href = "#";
-    navCta.onclick = () => {
-      localStorage.clear();
-      window.location.reload();
-    };
+  if (isLoggedIn) {
+    if (navCta) {
+      navCta.textContent = "👤 " + userEmail;
+      navCta.href = "#";
+      navCta.onclick = () => { localStorage.clear(); window.location.reload(); };
+    }
+    if (navCtaMobile) {
+      navCtaMobile.textContent = "👤 " + userEmail;
+      navCtaMobile.href = "#";
+      navCtaMobile.onclick = () => { localStorage.clear(); window.location.reload(); };
+    }
   }
 </script>
 
