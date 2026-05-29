@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/output.css">
+    <link rel="stylesheet" href="../dist/output.css">
+    <title>LifeTrack</title>
+</head>
+<body class="bg-slate-500">
+
+<!-- NAVBAR -->
+<nav class="w-full bg-black text-white px-6 py-3">
+  <div class="w-full flex justify-between items-center px-6">
+    <h1 class="text-xl font-serif">MORE THAN LIVING</h1>
+    <ul class="hidden md:flex gap-6 items-center ml-8">
+      <li><a href="#" class="hover:text-gray-300">Home</a></li>
+      <li><a href="#" class="hover:text-gray-300">About</a></li>
+      <li><a href="#" class="hover:text-gray-300">Features</a></li>
+      <li><a href="#" class="hover:text-gray-300">Contact</a></li>
+      <a href="signup.html" class="px-4 py-1.5 text-sm rounded-full border border-white hover:bg-white hover:text-black transition">
+  Login / Sign Up
+</a>
+    </ul>
+    <button id="menu-btn" class="md:hidden flex flex-col gap-1">
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden mt-4 flex flex-col gap-4 bg-black px-4 pb-4">
+    <a href="#" class="hover:text-gray-300">Home</a>
+    <a href="#" class="hover:text-gray-300">About</a>
+    <a href="#" class="hover:text-gray-300">Features</a>
+    <a href="#" class="hover:text-gray-300">Contact</a>
+    <button class="mt-2 px-4 py-2 text-sm rounded-full border border-white hover:bg-white hover:text-black transition">
+      Login / Sign Up
+    </button>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+
+<!-- HERO -->
+<header class="relative w-full h-screen overflow-hidden">
+  <img class="w-full h-full object-cover hidden md:block" src="lifestyleshopify.png" alt="">
+  <img class="w-full h-full object-cover md:hidden" src="lifestylepic2.png" alt="">
+  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
+    <h1 class="text-4xl md:text-6xl font-bold tracking-wide">LifeTrack</h1>
+    <p class="mt-4 text-lg md:text-xl">A space to slow down and just be🌿</p>
+  </div>
+</header>
+
+<!-- SECOND SECTION -->
+<section class="w-full min-h-screen bg-gradient-to-b from-white to-[#f1ca93] flex flex-col items-center px-6 pt-16 pb-20 relative overflow-hidden">
+
+    <!-- Background Image -->
+    <div class="absolute top-0 left-0 w-full h-full opacity-20 -z-10">
+        <img src="lifestylepic3.png" class="w-full h-full object-cover">
+    </div>
+
+    <!-- Heading -->
+    <h2 class="text-4xl md:text-5xl font-mono text-gray-800 text-center mb-4">
+        Take a moment for yourself<3
+    </h2>
+
+    <!-- Paragraph -->
+    <p class="max-w-3xl text-left md:text-center text-gray-600 text-lg mt-6 mb-14 leading-relaxed px-2">
+        Life gets overwhelming sometimes. This space is here to help you pause, breathe, and reconnect with yourself. 
+        Your mind deserves care too.🩶
+    </p>
+
+    <!-- Cards -->
+    <div class="flex flex-wrap justify-center gap-8 mt-10">
+
+        <!-- Card 1 -->
+        <div class="w-64 bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-300 text-center">
+            <div class="text-3xl mb-3">🌿</div>
+            <h3 class="text-xl font-semibold mb-1">Breathe</h3>
+            <p class="text-gray-600 text-sm">
+                You’re doing better than you think. Take a moment to appreciate yourself.
+            </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="w-64 bg-white p-6 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-300 text-center">
+            <div class="text-3xl mb-3">🧠</div>
+            <h3 class="text-xl font-semibold mb-1">Reflect</h3>
+            <p class="text-gray-600 text-sm">
+                Not everything has to be figured out today. Sit with your thoughts calmly.
+            </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="w-64 bg-white p-6 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-300 text-center">
+            <div class="text-3xl mb-3">🌼</div>
+            <h3 class="text-xl font-semibold mb-1">Grow</h3>
+            <p class="text-gray-600 text-sm">
+                You’re allowed to take things slow. Growing at your own pace is still growth.
+            </p>
+        </div>
+<div class="max-w-3xl text-left md:text-center text-gray-600 text-lg mt-6 mb-14 leading-relaxed">
+Life isn’t always easy to figure out and that’s okay. I have created this place for you all to connect and share. This place is all yours, just get it all out of your system. I’m here to offer guidance and support, no matter what you’re going through. All you need to do is just follow the guidance whether it feels easy or difficult, just try, adapt, and most importantly- Be kind to yourself.<br>
+If you ever want to talk or share something, feel free to reach out. 
+</div> 
+    </div>
+</section>
+
+<!-- WELLBEING FLOW SECTION -->
+<section id="wellbeing-flow" class="w-full bg-[#f1ca93] py-10 px-4">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center">🌱Your Daily Reflection & Wellbeing</h2>
+    <p class="text-gray-600 text-center mt-4 mb-10 max-w-3xl mx-auto">
+      Share a bit about your routine and current state of mind to get tailored wellbeing suggestions.
+    </p>
+    <form id="wellbeing-form" class="bg-[#dfb57a] shadow-lg rounded-2xl p-6 md:p-4 space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label for="wakeTime" class="block text-sm font-semibold text-gray-700 mb-2">What time do you wake up?</label>
+          <input id="wakeTime" type="time" class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300" required>
+        </div>
+        <div>
+          <label for="sleepTime" class="block text-sm font-semibold text-gray-700 mb-2">What time do you sleep?</label>
+          <input id="sleepTime" type="time" class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300" required>
+        </div>
+        <div class="md:col-span-2">
+          <label for="firstAction" class="block text-sm font-semibold text-gray-700 mb-2">After waking up, what is the first thing you do?</label>
+          <input id="firstAction" type="text" placeholder="Example: Check phone, drink water, pray, stretching..." class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300" required>
+        </div>
+        <div>
+          <label for="junkFood" class="block text-sm font-semibold text-gray-700 mb-2">How many times do you eat junk food in a week?</label>
+          <input id="junkFood" type="number" min="0" max="50" placeholder="0 - 50" class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300" required>
+        </div>
+        <div>
+          <label for="hobby" class="block text-sm font-semibold text-gray-700 mb-2">Do you have any hobby?</label>
+          <input id="hobby" type="text" placeholder="Example: reading, painting, music..." class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300">
+        </div>
+        <div class="md:col-span-2">
+          <label for="loveMost" class="block text-sm font-semibold text-gray-700 mb-2">What do you love the most in life?</label>
+          <input id="loveMost" type="text" placeholder="Example: family, career, peace, creativity..." class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300">
+        </div>
+      </div>
+      <div>
+        <label for="problemType" class="block text-sm font-semibold text-gray-700 mb-2">What kind of issue are you facing right now?</label>
+        <select id="problemType" class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300" required>
+          <option value="Select">Select</option>
+          <option value="work">Work / Job stress</option>
+          <option value="student">Student life / Exam pressure</option>
+          <option value="family">Family issues</option>
+          <option value="relationship">Love life / Relationship issues</option>
+          <option value="other">Other personal challenges</option>
+        </select>
+      </div>
+      <div>
+        <label for="problemDetails" class="block text-sm font-semibold text-gray-700 mb-2">Share your problem in detail</label>
+        <textarea id="problemDetails" rows="5" placeholder="Write what is bothering you. You can express anything here." class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300" required></textarea>
+      </div>
+       <button type="submit" class="w-full md:w-auto bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">
+    Get My Personalized Suggestion
+</button>
+    </form>
+    <div id="result-card" class="hidden mt-8 bg-white border border-indigo-100 rounded-2xl shadow p-6 md:p-8">
+  <h3 class="text-2xl font-bold text-gray-800 mb-3">Your Personalized Wellbeing Plan</h3>
+  <div id="result-summary" class="text-gray-700 mb-4"></div>
+  <div id="result-tips" class="text-gray-700"></div>
+</div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("wellbeing-form");
+  const resultCard = document.getElementById("result-card");
+  const resultSummary = document.getElementById("result-summary");
+  const resultTips = document.getElementById("result-tips");
+
+  function timeToMinutes(value) {
+    if (!value) return 0;
+    const parts = value.split(":");
+    return Number(parts[0]) * 60 + Number(parts[1]);
+  }
+
+  function sleepDurationHours(sleep, wake) {
+    if (!sleep || !wake) return 0;
+    let duration = wake - sleep;
+    if (duration <= 0) duration += 24 * 60;
+    return duration / 60;
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const wakeTime = document.getElementById("wakeTime").value;
+    const sleepTime = document.getElementById("sleepTime").value;
+    const firstAction = document.getElementById("firstAction").value.trim().toLowerCase();
+    const junkFood = Number(document.getElementById("junkFood").value);
+    const hobby = document.getElementById("hobby").value.trim();
+    const loveMost = document.getElementById("loveMost").value.trim();
+    const problemType = document.getElementById("problemType").value;
+    const problemDetails = document.getElementById("problemDetails").value.trim();
+
+    const wakeMin = timeToMinutes(wakeTime);
+    const sleepMin = timeToMinutes(sleepTime);
+    const sleepHours = sleepDurationHours(sleepMin, wakeMin);
+
+    // ─── BUILD ROUTINE SECTIONS ───────────────────────────
+
+    const morningRoutine = [];
+    const eveningRoutine = [];
+    const dailyHabits = [];
+    const problemTip = [];
+    const affirmation = [];
+
+    // ── MORNING ROUTINE ──
+    morningRoutine.push("🌅 Wake up at the same time every day — consistency is everything.");
+    if (firstAction.includes("phone") || firstAction.includes("social")) {
+      morningRoutine.push("📵 No phone for the first 30 minutes after waking. Your mind is fresh — protect it.");
+    }
+    morningRoutine.push("💧 First thing: drink a full glass of warm water. It wakes your body from inside.");
+    morningRoutine.push("🙏 Spend 5–10 minutes chanting or saying positive affirmations out loud. What you speak in the morning sets the tone for your entire day.");
+    morningRoutine.push("🧘 Do 10 minutes of light stretching or breathing — inhale 4 sec, hold 4, exhale 4.");
+    morningRoutine.push("☀️ Get 10 minutes of natural sunlight. Step outside or sit near a window.");
+
+    // ── SLEEP & EVENING ROUTINE ──
+    if (sleepHours < 6.5) {
+      eveningRoutine.push("😴 You are sleeping less than 6.5 hours — this is affecting your mood, focus, and health. Try to sleep 30 minutes earlier every week until you reach 7–8 hours.");
+    } else if (sleepHours > 8.5) {
+      eveningRoutine.push("⏰ You are sleeping more than 8.5 hours — oversleeping can cause fatigue and low motivation. Set a fixed wake-up time and stick to it.");
+    } else {
+      eveningRoutine.push("✅ Your sleep duration is healthy! Keep this consistency going — your body loves routine.");
+    }
+    eveningRoutine.push("📵 Stop using screens 30 minutes before sleeping — blue light disrupts your sleep quality.");
+    eveningRoutine.push("📓 Before sleeping, write 3 things you are grateful for today. This shifts your mind to a positive state.");
+    eveningRoutine.push("🙏 End your day with positive affirmations or chanting — what you think before sleeping, your subconscious works on it all night.");
+    eveningRoutine.push("🌙 Keep your room dark, cool, and quiet. Your sleep environment matters.");
+
+    // ── DAILY HABITS ──
+    if (junkFood >= 3) {
+      dailyHabits.push("🥗 You are eating junk food " + junkFood + " times a week — try replacing at least 2 of those with home-cooked meals. Your food is your fuel.");
+      dailyHabits.push("🍎 Add one fruit and one vegetable to your day — small steps create big changes.");
+    } else {
+      dailyHabits.push("🥗 Your diet is fairly balanced. Stay consistent and keep hydrating throughout the day.");
+    }
+
+    if (!hobby) {
+      dailyHabits.push("🎨 You don't have a hobby right now — try to find one thing you enjoy doing just for yourself, 20–30 minutes a day. It could be music, journaling, drawing, gardening — anything.");
+    } else {
+      dailyHabits.push("🎨 Your hobby (" + hobby + ") is your mental reset — schedule it like an important meeting. Non-negotiable.");
+    }
+
+    dailyHabits.push("🚶 Walk for at least 20 minutes daily — outside if possible. Movement is medicine.");
+    dailyHabits.push("📵 Take one 'no social media' hour every day — use that time for yourself.");
+    dailyHabits.push("💬 Talk to at least one positive, growth-driven person every day. Your circle shapes your energy.");
+
+    // ── PROBLEM SPECIFIC TIP ──
+    if (problemType === "work") {
+      problemTip.push("💼 Work Stress Plan: Divide your day into 3 focused blocks of 90 minutes each with 15 minute breaks. After work hours — fully disconnect. Your rest is as important as your work.");
+      problemTip.push("📝 Every morning write your top 3 work priorities only. Do not multitask — finish one before starting the next.");
+    } else if (problemType === "student") {
+      problemTip.push("📚 Study Plan: Use the 45-10 method — study for 45 minutes, take a 10 minute real break (no phone). Repeat.");
+      problemTip.push("📝 Every night write only 3 tasks for tomorrow. This reduces overwhelm and gives you clear direction.");
+      problemTip.push("🧠 Revise what you studied before sleeping — your brain consolidates memory during sleep.");
+    } else if (problemType === "family") {
+      problemTip.push("🏠 Family Stress Plan: Choose one calm time each day to communicate — not when emotions are high. Speak about how YOU feel, not what others did wrong.");
+      problemTip.push("🙏 Remember: you cannot control others, only your response. Focus on your own peace first.");
+    } else if (problemType === "relationship") {
+      problemTip.push("💛 Relationship Plan: Before any difficult conversation, write your feelings down first. This helps you speak clearly without reacting emotionally.");
+      problemTip.push("🌿 Give yourself and the other person space to process. Not everything needs to be solved immediately.");
+    } else {
+      problemTip.push("🌱 Break your challenge into 3 levels: What can I do TODAY? What can I do THIS WEEK? What can I do THIS MONTH? Focus only on today first.");
+    }
+
+    // ── AFFIRMATION ──
+    const coreValue = loveMost || "growth and peace";
+    affirmation.push("💜 You love " + coreValue + " — let that be your anchor. On hard days, come back to what truly matters to you.");
+    affirmation.push("🌟 You are a work in progress and that is perfectly okay. Every small step you take today is building the version of you that you are becoming.");
+    affirmation.push("🙏 Say this every morning: 'I am growing. I am healing. I am enough. Today I choose peace.'");
+
+    // ─── RENDER RESULT ────────────────────────────────────
+
+    const detailSnippet = problemDetails.length > 100 ? problemDetails.slice(0, 100) + "..." : problemDetails;
+    resultSummary.innerHTML = `
+      <p style="font-size:15px; color:#374151; line-height:1.7;">
+        Based on everything you shared, here is your <strong>personalized daily routine and wellness plan</strong>. 
+        This is not just advice — this is a <strong>lifestyle you can start building from today</strong>. 
+        Small consistent steps will change everything. 🌿
+      </p>
+    `;
+
+    resultTips.innerHTML = "";
+
+    const sections = [
+      { title: "🌅 Your Morning Routine", color: "#fef9c3", items: morningRoutine },
+      { title: "🌙 Your Evening & Sleep Routine", color: "#ede9fe", items: eveningRoutine },
+      { title: "💪 Your Daily Habits", color: "#dcfce7", items: dailyHabits },
+      { title: "🎯 Your Problem-Specific Plan", color: "#fee2e2", items: problemTip },
+      { title: "💜 Your Daily Affirmation", color: "#fce7f3", items: affirmation },
+    ];
+
+    sections.forEach(function (section) {
+      const sectionDiv = document.createElement("div");
+      sectionDiv.style.cssText = `
+        background: ${section.color};
+        border-radius: 14px;
+        padding: 16px 20px;
+        margin-bottom: 16px;
+      `;
+
+      const title = document.createElement("h4");
+      title.style.cssText = "font-size:16px; font-weight:700; color:#1e1b4b; margin-bottom:10px;";
+      title.textContent = section.title;
+      sectionDiv.appendChild(title);
+
+      const ul = document.createElement("ul");
+      ul.style.cssText = "list-style:none; padding:0; margin:0;";
+
+      section.items.forEach(function (item) {
+        const li = document.createElement("li");
+        li.style.cssText = "font-size:13.5px; color:#374151; padding:6px 0; border-bottom:1px solid rgba(0,0,0,0.06); line-height:1.6;";
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+
+      sectionDiv.appendChild(ul);
+      resultTips.appendChild(sectionDiv);
+    });
+
+    // Final note
+    const note = document.createElement("p");
+    note.style.cssText = "font-size:12px; color:gray; margin-top:16px; text-align:center;";
+    note.textContent = "Note: This guidance is for emotional support and lifestyle improvement, not a substitute for professional medical care.🌿";
+    resultTips.appendChild(note);
+
+    resultCard.classList.remove("hidden");
+    resultCard.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+</script>
+
+<!-- FOOTER -->
+<footer class="w-full bg-[#f4c277] py-6 px-6">
+  <div class="max-w-6xl mx-auto flex flex-col items-center gap-3">
+
+    <!-- Divider -->
+    <div class="w-full border-t border-white/50 mb-2"></div>
+
+    <!-- Quote -->
+    <p class="text-center text-gray-700 text-sm italic px-4">
+      "Always remember that the people you associate with are the ones who decide your growth."
+    </p>
+    <p class="text-center text-gray-700 text-sm italic px-4">
+  "Your circle shapes your destiny — choose wisely. 🌿"
+</p>
+<p class="text-gray-600 text-xs font-semibold tracking-wide uppercase mt-1">
+  #EVERY SOUL IS IMPORTANT<3
+</p>
+
+    <!-- Links and Copyright in one line -->
+    <div class="flex flex-wrap justify-center items-center gap-6 text-sm mt-1">
+      <a href="mailto:aayushimohanpersonal@gmail.com" class="text-gray-600 hover:text-gray-900 transition duration-300">📧 Email</a>
+      <a href="https://www.instagram.com/yourusername" target="_blank" class="text-gray-600 hover:text-pink-600 transition duration-300">🌐 Instagram</a>
+      <span class="text-gray-500 text-xs">© 2026 LifeTrack. Made with <span class="text-red-400">♥</span> by A.</span>
+    </div>
+
+  </div>
+</footer>
+
+<!-- FLOATING CHAT BUTTON (fixed, always visible on screen) -->
+<div id="chat-btn" style="position:fixed; bottom:30px; right:25px; background:#9b8a29; color:white; width:52px; height:52px; border-radius:50%; cursor:pointer; z-index:9999; font-size:22px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 15px rgba(227, 163, 12, 0.5);">
+  💬
+</div>
+
+<!-- CHATBOX (pops up above the button) -->
+<div id="chatbox" style="display:none; position:fixed; bottom:95px; right:25px; width:300px; background:white; border-radius:12px; overflow:hidden; z-index:9999; box-shadow:0 8px 25px rgba(0,0,0,0.15);">
+  <div style="background:#ab9a2d; color:white; padding:12px 14px; font-weight:600; font-size:14px;">
+    LifeTrack Assistant 💬
+  </div>
+  <div id="messages" style="height:220px; overflow-y:auto; padding:12px; font-size:14px;"></div>
+  <input id="userInput" type="text" placeholder="Type a message and press Enter..."
+    style="width:100%; padding:10px 12px; border:none; border-top:1px solid #eee; outline:none; box-sizing:border-box; font-size:13px;">
+</div>
+
+<script>
+  const chatBtn = document.getElementById("chat-btn");
+  const chatbox = document.getElementById("chatbox");
+  const input = document.getElementById("userInput");
+  const messages = document.getElementById("messages");
+
+  chatBtn.onclick = () => {
+    chatbox.style.display = chatbox.style.display === "none" ? "block" : "none";
+  };
+
+  input.addEventListener("keypress", async function(e) {
+    if (e.key === "Enter") {
+      const userText = input.value.trim();
+      if (!userText) return;
+      addMessage("You", userText, "#f3f4f6");
+      input.value = "";
+
+      const botReply = await getBotReply(userText);
+
+      // check if bot wants to show feedback form
+      if (botReply === "SHOW_FEEDBACK_FORM") {
+        showFeedbackForm();
+      } else {
+        addMessage("LifeTrack", botReply, "#eef2ff");
+      }
+    }
+  });
+
+  function addMessage(sender, text, bgColor) {
+    const msg = document.createElement("div");
+    msg.style.cssText = `margin-bottom:10px; padding:8px 10px; border-radius:8px; background:${bgColor}; font-size:13px; line-height:1.5;`;
+    msg.innerHTML = `<b>${sender}:</b><br>${text.replace(/\n/g, "<br>")}`;
+    messages.appendChild(msg);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  async function getBotReply(message) {
+    try {
+      const response = await fetch("http://localhost:3000/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      });
+      const data = await response.json();
+      return data.reply;
+    } catch (err) {
+      return "Server not connected. Please start the backend 🔌";
+    }
+  }
+
+  function showFeedbackForm() {
+    const formDiv = document.createElement("div");
+    formDiv.style.cssText = "padding:10px; font-size:13px;";
+    formDiv.innerHTML = `
+      <b>Send us your feedback 💬</b><br><br>
+      <input id="fb-name" type="text" placeholder="Your name"
+        style="width:100%; padding:6px; margin-bottom:6px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box;"><br>
+      <input id="fb-email" type="email" placeholder="Your email"
+        style="width:100%; padding:6px; margin-bottom:6px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box;"><br>
+      <textarea id="fb-msg" rows="3" placeholder="Your message or problem..."
+        style="width:100%; padding:6px; margin-bottom:6px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box; resize:none;"></textarea><br>
+      <button onclick="submitFeedback()"
+        style="width:100%; padding:8px; background:#4f46e5; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:600;">
+        Send Feedback
+      </button>
+      <div id="fb-msg-status" style="margin-top:6px; text-align:center; font-size:12px;"></div>
+    `;
+    messages.appendChild(formDiv);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  async function submitFeedback() {
+    const name = document.getElementById("fb-name").value.trim();
+    const email = document.getElementById("fb-email").value.trim();
+    const msg = document.getElementById("fb-msg").value.trim();
+    const status = document.getElementById("fb-msg-status");
+
+    if (!name || !email || !msg) {
+      status.style.color = "red";
+      status.textContent = "Please fill in all fields.";
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/chat/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message: msg })
+      });
+      const data = await response.json();
+      status.style.color = "green";
+      status.textContent = data.message;
+    } catch (err) {
+      status.style.color = "red";
+      status.textContent = "Could not send. Please email us directly.";
+    }
+  }
+</script>
+
+</body>
+</html>
