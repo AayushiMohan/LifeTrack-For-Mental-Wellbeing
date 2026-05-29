@@ -172,10 +172,13 @@
         });
         const data = await res.json();
         if (res.ok) {
-          msg.style.color = "green";
-          msg.textContent = data.message;
-          setTimeout(() => window.location.href = "index.html", 1500);
-        } else {
+        localStorage.setItem("loggedIn", "true");
+        localStorage.setItem("userEmail", email);
+        msg.style.color = "green";
+        msg.textContent = data.message;
+        setTimeout(() => window.location.href = "index.html", 1500);
+       }
+        else {
           msg.style.color = "red";
           msg.textContent = data.message;
         }
