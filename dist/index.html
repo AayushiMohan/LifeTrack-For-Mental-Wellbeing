@@ -814,7 +814,44 @@
   </style>
 </head>
 <body>
+ 
+<script>
+  const loggedIn = localStorage.getItem("loggedIn");
+  if (!loggedIn) {
+    document.addEventListener("DOMContentLoaded", function() {
+      // About, Features, Footer sab hide karo
+      const about = document.getElementById("about");
+      const features = document.getElementById("features");
+      const contact = document.getElementById("contact");
+      const floatBtns = document.querySelectorAll(".float-btn");
+      const chatbox = document.getElementById("chatbox");
+      const contactPopup = document.getElementById("contact-popup");
 
+      if (about) about.style.display = "none";
+      if (features) features.style.display = "none";
+      if (contact) contact.style.display = "none";
+      floatBtns.forEach(btn => btn.style.display = "none");
+      if (chatbox) chatbox.style.display = "none";
+      if (contactPopup) contactPopup.style.display = "none";
+
+      // Hero par ek message aur signup button dikhao
+      const heroContent = document.querySelector(".hero-content");
+      if (heroContent) {
+        const loginPrompt = document.createElement("div");
+        loginPrompt.style.cssText = "margin-top:32px; display:flex; gap:16px;";
+        loginPrompt.innerHTML = `
+          <a href="signup.html" style="padding:12px 28px; background:#f4c277; color:#1a1a1a; border-radius:100px; font-weight:600; font-size:14px; text-decoration:none; letter-spacing:1px;">
+            Get Started 🌿
+          </a>
+          <a href="login.html" style="padding:12px 28px; background:transparent; color:white; border:1px solid rgba(255,255,255,0.5); border-radius:100px; font-size:14px; text-decoration:none; letter-spacing:1px;">
+            Login
+          </a>
+        `;
+        heroContent.appendChild(loginPrompt);
+      }
+    });
+  }
+</script>
 <!-- ── NAVBAR ── -->
 <nav class="navbar" id="navbar">
   <div class="brand">More Than <em style="font-style:italic; color:var(--amber);">Living</em></div>
