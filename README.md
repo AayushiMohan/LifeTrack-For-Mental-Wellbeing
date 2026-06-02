@@ -41,6 +41,9 @@ Whether you are dealing with stress, anxiety, sleep issues, relationship problem
 - MongoDB Atlas
 - Mongoose
 
+**Deployment**
+- Render
+- Netlify
 ---
 
 ## 💬 Chatbot Topics
