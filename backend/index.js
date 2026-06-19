@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const User = require("./models/User");
 const chatRouter = require("./routes/chat");
 const app = express();
+const problemsRouter = require("./routes/problems");
 
 // Middleware
 app.use(cors());
@@ -67,9 +68,9 @@ app.post("/login", async (req, res) => {
     res.status(500).json({ message: "Server error", error });
   }
 });
-
 // CHAT ROUTES
 app.use("/chat", chatRouter);
+app.use("/problems", problemsRouter);
 
 // PORT (VERY IMPORTANT for Render)
 const PORT = process.env.PORT || 3000;
