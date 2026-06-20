@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Posts – LifeTrack</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #faf6f0;
+      --amber: #f4c277;
+      --amber-deep: #e8a045;
+      --dark: #1a1a1a;
+      --text: #374151;
+      --muted: #6b7280;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    h1 { font-family: 'Cormorant Garamond', serif; }
+
+    .top-bar {
+      max-width: 700px;
+      margin: 0 auto 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .header {
+      max-width: 700px;
+      margin: 0 auto 32px;
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .header p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .feed {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .post-card {
+      background: white;
+      border-radius: 16px;
+      padding: 22px 24px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    }
+    .post-card .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--amber-deep);
+      background: rgba(244,194,119,0.15);
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+    .post-card h4 {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .post-card p {
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .requests-box {
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-top: 10px;
+    }
+    .requests-box h5 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .request-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 13px;
+    }
+    .request-row:last-child { border-bottom: none; }
+    .accept-btn {
+      padding: 5px 14px;
+      border-radius: 100px;
+      background: var(--dark);
+      color: white;
+      border: none;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .accept-btn:hover { background: var(--amber-deep); }
+    .accept-btn:disabled { background: #d1d5db; cursor: default; }
+
+    .no-requests {
+      font-size: 12.5px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 40px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="index.html">← Back to Home</a>
+    <a href="community.html">Community →</a>
+  </div>
+
+  <div class="header">
+    <h1>My Posts 🌿</h1>
+    <p>See who wants to connect with you</p>
+  </div>
+
+  <div class="feed" id="feed">
+    <p class="empty-state">Loading your posts...</p>
+  </div>
+
+  <script>
+    const API_URL = "https://lifetrack-api-3jzf.onrender.com";
+    const userEmail = localStorage.getItem("userEmail");
+
+    const categoryLabels = {
+      study: "Study Focus", fitness: "Gym / Fitness", routine: "Routine Building",
+      loneliness: "Loneliness", career: "Career Stress", habits: "Quitting Bad Habits"
+    };
+
+    async function loadMyPosts() {
+      const feed = document.getElementById("feed");
+
+      if (!userEmail) {
+        feed.innerHTML = '<p class="empty-state">Please <a href="login.html">login</a> to see your posts.</p>';
+        return;
+      }
+
+      try {
+        const res = await fetch(API_URL + "/problems/my-posts/" + userEmail);
+        const problems = await res.json();
+
+        if (!problems.length) {
+          feed.innerHTML = '<p class="empty-state">You haven\'t posted anything yet. <a href="community.html">Share your problem</a> 🌿</p>';
+          return;
+        }
+
+        feed.innerHTML = "";
+        problems.forEach(p => {
+          const accepted = p.acceptedConnections || [];
+          const pending = p.connectRequests.filter(email => !accepted.includes(email));
+
+          let requestsHtml = "";
+          if (pending.length === 0 && accepted.length === 0) {
+            requestsHtml = '<p class="no-requests">No connect requests yet.</p>';
+          } else {
+            requestsHtml = '<div class="requests-box"><h5>Connect Requests</h5>';
+            pending.forEach(email => {
+              requestsHtml += `
+                <div class="request-row">
+                  <span>${maskEmail(email)}</span>
+                  <button class="accept-btn" onclick="acceptRequest('${p._id}', '${email}', this)">Accept</button>
+                </div>
+              `;
+            });
+            accepted.forEach(email => {
+              requestsHtml += `
+                <div class="request-row">
+                  <span>${maskEmail(email)}</span>
+                  <button class="accept-btn" disabled>Accepted ✓</button>
+                </div>
+              `;
+            });
+            requestsHtml += '</div>';
+          }
+
+          const card = document.createElement("div");
+          card.className = "post-card";
+          card.innerHTML = `
+            <span class="tag">${categoryLabels[p.category] || p.category}</span>
+            <h4>${p.title}</h4>
+            <p>${p.description}</p>
+            ${requestsHtml}
+          `;
+          feed.appendChild(card);
+        });
+      } catch {
+        feed.innerHTML = '<p class="empty-state">Could not load your posts.</p>';
+      }
+    }
+
+    function maskEmail(email) {
+      const [name, domain] = email.split("@");
+      return name.slice(0, 3) + "***@" + domain;
+    }
+
+    async function acceptRequest(problemId, connectorEmail, btn) {
+      try {
+        const res = await fetch(API_URL + "/problems/" + problemId + "/accept", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ connectorEmail })
+        });
+        if (res.ok) {
+          loadMyPosts();
+        }
+      } catch {
+        alert("Could not accept. Try again.");
+      }
+    }
+
+    loadMyPosts();
+  </script>
+
+</body>
+</html>
