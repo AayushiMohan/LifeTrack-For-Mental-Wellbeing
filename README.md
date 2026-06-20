@@ -7,7 +7,7 @@
 
 ## What is LifeTrack?
 
-**LifeTrack** is a wellness web app designed for people who want to slow down, reflect, and grow. It is not just a website — it is a safe space where you can express yourself, get personalized wellness guidance, and find the motivation to keep going.
+**LifeTrack** is a wellness web app designed for people who want to slow down, reflect, and grow. It is not just a website — it is a safe space where you can express yourself, get personalized wellness guidance, and anonymous peer-support community board with connection requests, and tailored lifestyle and recommendations based on individual habits and challenges. 
 
 Whether you are dealing with stress, anxiety, sleep issues, relationship problems, or just need someone to talk to — LifeTrack is here for you. 🤍
 
