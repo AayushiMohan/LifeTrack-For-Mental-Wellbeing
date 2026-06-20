@@ -48,10 +48,18 @@ router.post("/:id/connect", async (req, res) => {
 
     if (!problem) return res.status(404).json({ message: "Problem not found." });
 
-    if (!problem.connectRequests.includes(userEmail)) {
-      problem.connectRequests.push(userEmail);
-      await problem.save();
+    // Owner apni hi post pe connect nahi kar sakta
+    if (problem.userEmail === userEmail) {
+      return res.status(400).json({ message: "You cannot connect to your own post." });
     }
+
+    // Agar already request bheji hai toh dobara mat add karo
+    if (problem.connectRequests.includes(userEmail)) {
+      return res.status(400).json({ message: "You already requested to connect." });
+    }
+
+    problem.connectRequests.push(userEmail);
+    await problem.save();
 
     res.status(200).json({ message: "Connect request sent ✅" });
   } catch (err) {
