@@ -7,6 +7,7 @@ const problemSchema = new mongoose.Schema({
   title: String,
   description: String,
   connectRequests: [String],
+  acceptedConnections: [String],
   createdAt: {
     type: Date,
     default: Date.now
