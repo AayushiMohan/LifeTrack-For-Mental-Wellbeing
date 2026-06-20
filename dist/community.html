@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community – LifeTrack</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #faf6f0;
+      --amber: #f4c277;
+      --amber-deep: #e8a045;
+      --dark: #1a1a1a;
+      --text: #374151;
+      --muted: #6b7280;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    h1, h2 { font-family: 'Cormorant Garamond', serif; }
+
+    .top-bar {
+      max-width: 900px;
+      margin: 0 auto 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .top-bar a:hover { color: var(--dark); }
+
+    .header {
+      max-width: 900px;
+      margin: 0 auto 32px;
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .header p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .post-box {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+      border: 1px solid rgba(244,194,119,0.2);
+    }
+    .post-box h3 {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .post-box select,
+    .post-box input,
+    .post-box textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-family: 'DM Sans', sans-serif;
+      margin-bottom: 14px;
+      outline: none;
+      background: #fafafa;
+    }
+    .post-box select:focus,
+    .post-box input:focus,
+    .post-box textarea:focus {
+      border-color: var(--amber);
+      background: white;
+    }
+    .post-box textarea { resize: none; }
+    .post-box button {
+      width: 100%;
+      padding: 13px;
+      background: var(--dark);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .post-box button:hover { background: var(--amber-deep); }
+    #post-status { text-align: center; font-size: 13px; margin-top: 10px; min-height: 18px; }
+
+    .filter-bar {
+      max-width: 700px;
+      margin: 0 auto 24px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .filter-btn {
+      padding: 7px 16px;
+      border-radius: 100px;
+      border: 1px solid #e5e7eb;
+      background: white;
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .filter-btn.active {
+      background: var(--dark);
+      color: white;
+      border-color: var(--dark);
+    }
+
+    .feed {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .problem-card {
+      background: white;
+      border-radius: 16px;
+      padding: 22px 24px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .problem-card .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--amber-deep);
+      background: rgba(244,194,119,0.15);
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+    .problem-card h4 {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .problem-card p {
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .connect-btn {
+      padding: 7px 16px;
+      border-radius: 100px;
+      background: var(--amber);
+      color: var(--dark);
+      border: none;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .connect-btn:hover { background: var(--amber-deep); }
+    .connect-btn:disabled { background: #d1d5db; cursor: default; }
+
+    .empty-state {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 40px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="index.html">← Back to Home</a>
+    <span id="user-tag" style="font-size:13px; color:#9ca3af;"></span>
+  </div>
+
+  <div class="header">
+    <h1>Community Circle 🌿</h1>
+    <p>Share what you're struggling with. Find people walking the same path.</p>
+  </div>
+
+  <div class="post-box">
+    <h3>Share Your Problem</h3>
+    <select id="category">
+      <option value="">Select a category</option>
+      <option value="study">Study Focus</option>
+      <option value="fitness">Gym / Fitness</option>
+      <option value="routine">Routine Building</option>
+      <option value="loneliness">Loneliness</option>
+      <option value="career">Career Stress</option>
+      <option value="habits">Quitting Bad Habits</option>
+    </select>
+    <input id="title" type="text" placeholder="Give it a short title...">
+    <textarea id="description" rows="4" placeholder="Describe what you're going through..."></textarea>
+    <button onclick="postProblem()">Post Anonymously</button>
+    <div id="post-status"></div>
+  </div>
+
+  <div class="filter-bar" id="filter-bar">
+    <button class="filter-btn active" data-category="">All</button>
+    <button class="filter-btn" data-category="study">Study</button>
+    <button class="filter-btn" data-category="fitness">Fitness</button>
+    <button class="filter-btn" data-category="routine">Routine</button>
+    <button class="filter-btn" data-category="loneliness">Loneliness</button>
+    <button class="filter-btn" data-category="career">Career</button>
+    <button class="filter-btn" data-category="habits">Habits</button>
+  </div>
+
+  <div class="feed" id="feed">
+    <p class="empty-state">Loading posts...</p>
+  </div>
+
+  <script>
+    const API_URL = "https://lifetrack-api-3jzf.onrender.com";
+    const userEmail = localStorage.getItem("userEmail") || "anonymous@guest.com";
+
+    document.getElementById("user-tag").textContent = localStorage.getItem("loggedIn")
+      ? "Posting as " + userEmail
+      : "Posting as Guest";
+
+    async function postProblem() {
+      const category = document.getElementById("category").value;
+      const title = document.getElementById("title").value.trim();
+      const description = document.getElementById("description").value.trim();
+      const status = document.getElementById("post-status");
+
+      if (!category || !title || !description) {
+        status.style.color = "red";
+        status.textContent = "Please fill in all fields.";
+        return;
+      }
+
+      try {
+        const res = await fetch(API_URL + "/problems", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userEmail, category, title, description })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          status.style.color = "green";
+          status.textContent = data.message;
+          document.getElementById("category").value = "";
+          document.getElementById("title").value = "";
+          document.getElementById("description").value = "";
+          loadProblems();
+        } else {
+          status.style.color = "red";
+          status.textContent = data.message;
+        }
+      } catch {
+        status.style.color = "red";
+        status.textContent = "Could not connect to server.";
+      }
+    }
+
+    async function loadProblems(category = "") {
+      const feed = document.getElementById("feed");
+      feed.innerHTML = '<p class="empty-state">Loading posts...</p>';
+
+      try {
+        const url = category ? API_URL + "/problems?category=" + category : API_URL + "/problems";
+        const res = await fetch(url);
+        const problems = await res.json();
+
+        if (!problems.length) {
+          feed.innerHTML = '<p class="empty-state">No posts yet in this category. Be the first to share. 🌿</p>';
+          return;
+        }
+
+        const categoryLabels = {
+          study: "Study Focus", fitness: "Gym / Fitness", routine: "Routine Building",
+          loneliness: "Loneliness", career: "Career Stress", habits: "Quitting Bad Habits"
+        };
+
+        feed.innerHTML = "";
+        problems.forEach(p => {
+          const alreadyConnected = p.connectRequests.includes(userEmail);
+          const card = document.createElement("div");
+          card.className = "problem-card";
+          card.innerHTML = `
+            <span class="tag">${categoryLabels[p.category] || p.category}</span>
+            <h4>${p.title}</h4>
+            <p>${p.description}</p>
+            <div class="card-footer">
+              <span>Posted by ${p.anonymousName}</span>
+              <button class="connect-btn" onclick="connectWith('${p._id}', this)" ${alreadyConnected ? "disabled" : ""}>
+                ${alreadyConnected ? "Requested ✓" : "Connect"}
+              </button>
+            </div>
+          `;
+          feed.appendChild(card);
+        });
+      } catch {
+        feed.innerHTML = '<p class="empty-state">Could not load posts. Please try again.</p>';
+      }
+    }
+
+    async function connectWith(id, btn) {
+      try {
+        const res = await fetch(API_URL + "/problems/" + id + "/connect", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userEmail })
+        });
+        if (res.ok) {
+          btn.textContent = "Requested ✓";
+          btn.disabled = true;
+        }
+      } catch {
+        alert("Could not connect. Try again.");
+      }
+    }
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        loadProblems(btn.dataset.category);
+      });
+    });
+
+    loadProblems();
+  </script>
+
+</body>
+</html>
