@@ -58,5 +58,33 @@ router.post("/:id/connect", async (req, res) => {
     res.status(500).json({ message: "Something went wrong." });
   }
 });
+// GET MY POSTS — user ke apne posts with connect requests
+router.get("/my-posts/:email", async (req, res) => {
+  try {
+    const problems = await Problem.find({ userEmail: req.params.email }).sort({ createdAt: -1 });
+    res.status(200).json(problems);
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+});
 
+// ACCEPT a connect request — creates a group
+router.post("/:id/accept", async (req, res) => {
+  try {
+    const { connectorEmail } = req.body;
+    const problem = await Problem.findById(req.params.id);
+
+    if (!problem) return res.status(404).json({ message: "Problem not found." });
+
+    if (!problem.acceptedConnections) problem.acceptedConnections = [];
+    if (!problem.acceptedConnections.includes(connectorEmail)) {
+      problem.acceptedConnections.push(connectorEmail);
+      await problem.save();
+    }
+
+    res.status(200).json({ message: "Connection accepted ✅" });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+});
 module.exports = router;
