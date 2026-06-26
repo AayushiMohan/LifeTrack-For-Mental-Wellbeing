@@ -6,6 +6,24 @@ const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const User = require("./models/User");
 const chatRouter = require("./routes/chat");
+// Middleware - token verify karta hai
+function verifyToken(req, res, next) {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ message: "No token provided. Please login." });
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  try {
+    const decoded = require("jsonwebtoken").verify(token, process.env.JWT_SECRET);
+    req.userEmail = decoded.email;
+    next();
+  } catch (err) {
+    return res.status(401).json({ message: "Invalid or expired token. Please login again." });
+  }
+}
 const app = express();
 const problemsRouter = require("./routes/problems");
 
