@@ -48,22 +48,29 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-// LOGIN
+//LOGIN
+const jwt = require("jsonwebtoken");
+
 app.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: "Email not found" });
     }
-
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Incorrect password" });
     }
 
-    res.status(200).json({ message: "Login successful ✅" });
+    // Yahan token banta hai
+    const token = jwt.sign(
+      { email: user.email, id: user._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
+
+    res.status(200).json({ message: "Login successful ✅", token, email: user.email });
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
