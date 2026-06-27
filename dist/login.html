@@ -137,7 +137,10 @@
     <input type="email" id="email" placeholder="you@example.com">
 
     <label for="password">Password</label>
-    <input type="password" id="password" placeholder="Enter your password">
+    <div style="position:relative;">
+    <input type="password" id="password" placeholder="Enter your password" style="padding-right:44px;">
+    <span onclick="togglePassword()" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:16px; user-select:none;" id="eye-icon">👁️</span>
+    </div>
 
     <button onclick="handleLogin()">Login</button>
     <div id="msg" class="msg"></div>
@@ -153,6 +156,17 @@
   </div>
 
   <script>
+    function togglePassword() {
+  const passwordInput = document.getElementById("password");
+  const eyeIcon = document.getElementById("eye-icon");
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    eyeIcon.textContent = "🙈";
+  } else {
+    passwordInput.type = "password";
+    eyeIcon.textContent = "👁️";
+  }
+}
     async function handleLogin() {
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
