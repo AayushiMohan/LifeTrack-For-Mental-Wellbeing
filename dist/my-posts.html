@@ -231,24 +231,26 @@
       const [name, domain] = email.split("@");
       return name.slice(0, 3) + "***@" + domain;
     }
-
     async function acceptRequest(problemId, connectorEmail, btn) {
-      try {
-        const res = await fetch(API_URL + "/problems/" + problemId + "/accept", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ connectorEmail })
-        });
-        if (res.ok) {
-          loadMyPosts();
-        }
-      } catch {
-        alert("Could not accept. Try again.");
-      }
+  const token = localStorage.getItem("token");
+  try {
+    const res = await fetch(API_URL + "/problems/" + problemId + "/accept", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+      },
+      body: JSON.stringify({ connectorEmail })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      loadMyPosts();
+      alert("Accepted! Go to 'My Groups' to start chatting.");
     }
-
-    loadMyPosts();
-  </script>
-
+  } catch {
+    alert("Could not accept. Try again.");
+  }
+}
+  <\script>
 </body>
 </html>
