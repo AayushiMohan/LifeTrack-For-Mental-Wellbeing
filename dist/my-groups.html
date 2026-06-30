@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Groups – LifeTrack</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #faf6f0;
+      --amber: #f4c277;
+      --amber-deep: #e8a045;
+      --dark: #1a1a1a;
+      --text: #374151;
+      --muted: #6b7280;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    h1 { font-family: 'Cormorant Garamond', serif; }
+    .top-bar {
+      max-width: 700px;
+      margin: 0 auto 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar a { font-size: 13px; color: var(--muted); text-decoration: none; }
+    .header { max-width: 700px; margin: 0 auto 32px; text-align: center; }
+    .header h1 { font-size: 36px; font-weight: 400; color: var(--dark); margin-bottom: 6px; }
+    .header p { font-size: 14px; color: var(--muted); }
+    .feed { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+    .group-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px 22px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .group-card:hover { transform: translateY(-2px); }
+    .group-card h4 { font-size: 16px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+    .group-card p { font-size: 12.5px; color: var(--muted); }
+    .group-card .arrow { font-size: 18px; color: var(--amber-deep); }
+    .empty-state { text-align: center; color: var(--muted); font-size: 14px; padding: 40px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="index.html">← Back to Home</a>
+    <a href="community.html">Community →</a>
+  </div>
+
+  <div class="header">
+    <h1>My Groups 🌿</h1>
+    <p>Your accountability circles</p>
+  </div>
+
+  <div class="feed" id="feed">
+    <p class="empty-state">Loading your groups...</p>
+  </div>
+
+  <script>
+    const API_URL = "https://lifetrack-api-3jzf.onrender.com";
+    const token = localStorage.getItem("token");
+
+    async function loadGroups() {
+      const feed = document.getElementById("feed");
+
+      if (!token) {
+        feed.innerHTML = '<p class="empty-state">Please <a href="login.html">login</a> to see your groups.</p>';
+        return;
+      }
+
+      try {
+        const res = await fetch(API_URL + "/groups/my-groups", {
+          headers: { "Authorization": "Bearer " + token }
+        });
+        const groups = await res.json();
+
+        if (!groups.length) {
+          feed.innerHTML = '<p class="empty-state">No groups yet. Connect with someone in the <a href="community.html">Community</a> to start one. 🌿</p>';
+          return;
+        }
+
+        feed.innerHTML = "";
+        groups.forEach(g => {
+          const card = document.createElement("div");
+          card.className = "group-card";
+          card.onclick = () => window.location.href = "group-chat.html?id=" + g._id;
+          card.innerHTML = `
+            <div>
+              <h4>${g.title}</h4>
+              <p>${g.members.length} members</p>
+            </div>
+            <span class="arrow">→</span>
+          `;
+          feed.appendChild(card);
+        });
+      } catch {
+        feed.innerHTML = '<p class="empty-state">Could not load groups.</p>';
+      }
+    }
+
+    loadGroups();
+  </script>
+
+</body>
+</html>
