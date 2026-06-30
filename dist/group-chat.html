@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Chat – LifeTrack</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #faf6f0;
+      --amber: #f4c277;
+      --amber-deep: #e8a045;
+      --dark: #1a1a1a;
+      --text: #374151;
+      --muted: #6b7280;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1 { font-family: 'Cormorant Garamond', serif; }
+
+    .top-bar {
+      background: var(--dark);
+      color: white;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar a { color: rgba(255,255,255,0.7); font-size: 13px; text-decoration: none; }
+    .top-bar h2 { font-size: 18px; font-weight: 600; }
+
+    .tracker-bar {
+      background: white;
+      padding: 16px 24px;
+      border-bottom: 1px solid #eee;
+    }
+    .tracker-bar h5 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .streak-list { display: flex; gap: 10px; flex-wrap: wrap; }
+    .streak-pill {
+      background: rgba(244,194,119,0.15);
+      color: var(--amber-deep);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .checkin-btn {
+      margin-top: 12px;
+      padding: 8px 18px;
+      background: var(--dark);
+      color: white;
+      border: none;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .checkin-btn:hover { background: var(--amber-deep); }
+    .checkin-btn:disabled { background: #d1d5db; cursor: default; }
+
+    .chat-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .msg-row { display: flex; flex-direction: column; max-width: 75%; }
+    .msg-row.own { align-self: flex-end; align-items: flex-end; }
+    .msg-sender { font-size: 10px; color: var(--muted); margin-bottom: 3px; padding: 0 4px; }
+    .msg-bubble {
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      background: white;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    }
+    .msg-row.own .msg-bubble { background: var(--dark); color: white; }
+
+    .input-bar {
+      background: white;
+      border-top: 1px solid #eee;
+      padding: 14px 24px;
+      display: flex;
+      gap: 10px;
+    }
+    .input-bar input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 100px;
+      font-size: 13.5px;
+      outline: none;
+    }
+    .input-bar input:focus { border-color: var(--amber); }
+    .input-bar button {
+      padding: 12px 22px;
+      background: var(--dark);
+      color: white;
+      border: none;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .input-bar button:hover { background: var(--amber-deep); }
+
+    .empty-state { text-align: center; color: var(--muted); font-size: 13px; padding: 30px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="my-groups.html">← My Groups</a>
+    <h2 id="group-title">Loading...</h2>
+    <span></span>
+  </div>
+
+  <div class="tracker-bar">
+    <h5>🔥 Streak Tracker</h5>
+    <div class="streak-list" id="streak-list"></div>
+    <button class="checkin-btn" id="checkin-btn" onclick="checkin()">Check In Today</button>
+  </div>
+
+  <div class="chat-area" id="chat-area">
+    <p class="empty-state">Loading messages...</p>
+  </div>
+
+  <div class="input-bar">
+    <input id="msg-input" type="text" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    const API_URL = "https://lifetrack-api-3jzf.onrender.com";
+    const token = localStorage.getItem("token");
+    const userEmail = localStorage.getItem("userEmail");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const groupId = urlParams.get("id");
+
+    if (!token || !groupId) {
+      document.body.innerHTML = '<p style="text-align:center; padding:60px 20px; color:#6b7280;">Please <a href="login.html">login</a> and select a group from <a href="my-groups.html">My Groups</a>.</p>';
+    }
+
+    async function loadGroupInfo() {
+      const res = await fetch(API_URL + "/groups/" + groupId, {
+        headers: { "Authorization": "Bearer " + token }
+      });
+      const group = await res.json();
+      if (res.ok) {
+        document.getElementById("group-title").textContent = group.title;
+      }
+    }
+
+    async function loadMessages() {
+      const chatArea = document.getElementById("chat-area");
+      try {
+        const res = await fetch(API_URL + "/groups/" + groupId + "/messages", {
+          headers: { "Authorization": "Bearer " + token }
+        });
+        const messages = await res.json();
+
+        if (!messages.length) {
+          chatArea.innerHTML = '<p class="empty-state">No messages yet. Say hello! 🌿</p>';
+          return;
+        }
+
+        chatArea.innerHTML = "";
+        messages.forEach(m => {
+          const isOwn = m.senderEmail === userEmail;
+          const row = document.createElement("div");
+          row.className = "msg-row" + (isOwn ? " own" : "");
+          row.innerHTML = `
+            <span class="msg-sender">${isOwn ? "You" : maskEmail(m.senderEmail)}</span>
+            <div class="msg-bubble">${m.text}</div>
+          `;
+          chatArea.appendChild(row);
+        });
+        chatArea.scrollTop = chatArea.scrollHeight;
+      } catch {
+        chatArea.innerHTML = '<p class="empty-state">Could not load messages.</p>';
+      }
+    }
+
+    function maskEmail(email) {
+      const [name, domain] = email.split("@");
+      return name.slice(0, 3) + "***";
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("msg-input");
+      const text = input.value.trim();
+      if (!text) return;
+
+      try {
+        await fetch(API_URL + "/groups/" + groupId + "/messages", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+          },
+          body: JSON.stringify({ text })
+        });
+        input.value = "";
+        loadMessages();
+      } catch {
+        alert("Could not send message.");
+      }
+    }
+
+    document.getElementById("msg-input").addEventListener("keypress", (e) => {
+      if (e.key === "Enter") sendMessage();
+    });
+
+    async function checkin() {
+      const btn = document.getElementById("checkin-btn");
+      try {
+        const res = await fetch(API_URL + "/groups/" + groupId + "/checkin", {
+          method: "POST",
+          headers: { "Authorization": "Bearer " + token }
+        });
+        const data = await res.json();
+        if (res.ok) {
+          btn.textContent = "Checked In ✅";
+          btn.disabled = true;
+          loadStreaks();
+        } else {
+          alert(data.message);
+        }
+      } catch {
+        alert("Could not check in.");
+      }
+    }
+
+    async function loadStreaks() {
+      const streakList = document.getElementById("streak-list");
+      try {
+        const res = await fetch(API_URL + "/groups/" + groupId + "/streaks", {
+          headers: { "Authorization": "Bearer " + token }
+        });
+        const streaks = await res.json();
+
+        streakList.innerHTML = "";
+        Object.keys(streaks).forEach(email => {
+          const pill = document.createElement("span");
+          pill.className = "streak-pill";
+          const label = email === userEmail ? "You" : maskEmail(email);
+          pill.textContent = label + ": " + streaks[email] + " days 🔥";
+          streakList.appendChild(pill);
+        });
+      } catch {
+        streakList.innerHTML = '<p class="empty-state">Could not load streaks.</p>';
+      }
+    }
+
+    if (token && groupId) {
+      loadGroupInfo();
+      loadMessages();
+      loadStreaks();
+      setInterval(loadMessages, 5000); 
+    }
+  </script>
+
+</body>
+</html>
