@@ -26,6 +26,7 @@ function verifyToken(req, res, next) {
 }
 const app = express();
 const problemsRouter = require("./routes/problems");
+const groupsRouter = require("./routes/groups");
 
 // Middleware
 app.use(cors());
@@ -96,6 +97,7 @@ app.post("/login", async (req, res) => {
 // CHAT ROUTES
 app.use("/chat", chatRouter);
 app.use("/problems", problemsRouter);
+app.use("/groups", groupsRouter);
 
 // PORT (VERY IMPORTANT for Render)
 const PORT = process.env.PORT || 3000;
