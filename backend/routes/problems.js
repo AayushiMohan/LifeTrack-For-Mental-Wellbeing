@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Problem = require("../models/Problem");
+const Group = require("../models/Group");
 const jwt = require("jsonwebtoken");
 
 function verifyToken(req, res, next) {
@@ -90,7 +91,7 @@ router.get("/my-posts/:email", verifyToken, async (req, res) => {
   }
 });
 
-// ACCEPT a connect request
+// ACCEPT a connect request — creates/updates group
 router.post("/:id/accept", verifyToken, async (req, res) => {
   try {
     const { connectorEmail } = req.body;
@@ -104,10 +105,29 @@ router.post("/:id/accept", verifyToken, async (req, res) => {
       await problem.save();
     }
 
-    res.status(200).json({ message: "Connection accepted ✅" });
+    // Search group for this problem
+    let group = await Group.findOne({ problemId: problem._id.toString() });
+
+    if (!group) {
+      group = new Group({
+        problemId: problem._id.toString(),
+        category: problem.category,
+        title: problem.title,
+        members: [problem.userEmail, connectorEmail]
+      });
+    } else {
+      if (!group.members.includes(connectorEmail)) {
+        group.members.push(connectorEmail);
+      }
+      if (!group.members.includes(problem.userEmail)) {
+        group.members.push(problem.userEmail);
+      }
+    }
+
+    await group.save();
+
+    res.status(200).json({ message: "Connection accepted ✅", groupId: group._id });
   } catch (err) {
     res.status(500).json({ message: "Something went wrong." });
   }
 });
-
-module.exports = router;
