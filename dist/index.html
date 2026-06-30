@@ -6,7 +6,6 @@
   <title>LifeTrack — More Than Living</title>
   <link rel="stylesheet" href="output.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --cream: #faf6f0;
@@ -20,22 +19,17 @@
       --text: #374151;
       --muted: #6b7280;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--cream);
       color: var(--text);
       overflow-x: hidden;
     }
-
     h1, h2, h3 {
       font-family: 'Cormorant Garamond', serif;
     }
-
     /* ── NAVBAR ── */
     .navbar {
       position: fixed;
@@ -53,12 +47,10 @@
       border-bottom: 1px solid rgba(255,255,255,0.06);
       transition: all 0.3s ease;
     }
-
     .navbar.scrolled {
       padding: 12px 40px;
       background: rgba(26,26,26,0.98);
     }
-
     .brand {
       font-family: 'Cormorant Garamond', serif;
       font-size: 20px;
@@ -67,18 +59,15 @@
       color: white;
       text-transform: uppercase;
     }
-
     .brand span {
       color: var(--amber);
     }
-
     .nav-links {
       display: flex;
       align-items: center;
       gap: 36px;
       list-style: none;
     }
-
     .nav-links a {
       color: rgba(255,255,255,0.75);
       text-decoration: none;
@@ -89,7 +78,6 @@
       transition: color 0.2s;
       position: relative;
     }
-
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -100,10 +88,8 @@
       background: var(--amber);
       transition: width 0.3s ease;
     }
-
     .nav-links a:hover { color: white; }
     .nav-links a:hover::after { width: 100%; }
-
     .nav-cta {
       padding: 9px 22px;
       border: 1px solid rgba(244,194,119,0.5);
@@ -115,15 +101,12 @@
       transition: all 0.3s ease !important;
       white-space: nowrap;
     }
-
     .nav-cta:hover {
       background: var(--amber) !important;
       color: var(--dark) !important;
       border-color: var(--amber) !important;
     }
-
     .nav-cta::after { display: none !important; }
-
     .hamburger {
       display: none;
       flex-direction: column;
@@ -133,7 +116,6 @@
       border: none;
       padding: 4px;
     }
-
     .hamburger span {
       display: block;
       width: 24px;
@@ -141,7 +123,6 @@
       background: white;
       transition: all 0.3s ease;
     }
-
     .mobile-menu {
       display: none;
       position: fixed;
@@ -155,9 +136,7 @@
       z-index: 999;
       border-top: 1px solid rgba(255,255,255,0.08);
     }
-
     .mobile-menu.open { display: flex; }
-
     .mobile-menu a {
       color: rgba(255,255,255,0.8);
       text-decoration: none;
@@ -167,7 +146,6 @@
       padding: 8px 0;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-
     /* ── HERO ── */
     .hero {
       position: relative;
@@ -175,13 +153,11 @@
       height: 100vh;
       overflow: hidden;
     }
-
     .hero img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
     .hero-overlay {
       position: absolute;
       inset: 0;
@@ -192,7 +168,6 @@
         rgba(26,26,26,0.7) 100%
       );
     }
-
     .hero-content {
       position: absolute;
       inset: 0;
@@ -203,7 +178,6 @@
       text-align: center;
       padding: 0 24px;
     }
-
     .hero-tag {
       display: inline-block;
       font-size: 11px;
@@ -216,7 +190,6 @@
       margin-bottom: 28px;
       animation: fadeUp 0.8s ease both;
     }
-
     .hero h1 {
       font-size: clamp(56px, 10vw, 110px);
       font-weight: 300;
@@ -225,12 +198,10 @@
       line-height: 1.05;
       animation: fadeUp 0.8s ease 0.15s both;
     }
-
     .hero h1 em {
       font-style: italic;
       color: var(--amber);
     }
-
     .hero-sub {
       margin-top: 20px;
       font-size: 16px;
@@ -239,7 +210,6 @@
       letter-spacing: 1px;
       animation: fadeUp 0.8s ease 0.3s both;
     }
-
     .hero-scroll {
       position: absolute;
       bottom: 36px;
@@ -255,26 +225,22 @@
       text-transform: uppercase;
       animation: fadeUp 1s ease 0.6s both;
     }
-
     .scroll-line {
       width: 1px;
       height: 50px;
       background: linear-gradient(to bottom, rgba(244,194,119,0.8), transparent);
       animation: scrollLine 2s ease infinite;
     }
-
     @keyframes scrollLine {
       0% { transform: scaleY(0); transform-origin: top; }
       50% { transform: scaleY(1); transform-origin: top; }
       51% { transform: scaleY(1); transform-origin: bottom; }
       100% { transform: scaleY(0); transform-origin: bottom; }
     }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     /* ── ABOUT SECTION ── */
     .about-section {
       background: linear-gradient(160deg, #ffffff 0%, #fdf6ec 40%, var(--amber-light) 100%);
@@ -282,7 +248,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .about-section::before {
       content: 'LIFE';
       position: absolute;
@@ -296,7 +261,6 @@
       pointer-events: none;
       user-select: none;
     }
-
     .section-tag {
       font-size: 11px;
       letter-spacing: 4px;
@@ -305,7 +269,6 @@
       margin-bottom: 16px;
       display: block;
     }
-
     .about-grid {
       max-width: 1100px;
       margin: 0 auto;
@@ -314,7 +277,6 @@
       gap: 80px;
       align-items: center;
     }
-
     .about-heading {
       font-size: clamp(38px, 5vw, 60px);
       font-weight: 300;
@@ -322,24 +284,20 @@
       line-height: 1.2;
       margin-bottom: 24px;
     }
-
     .about-heading em {
       font-style: italic;
       color: var(--amber-deep);
     }
-
     .about-body {
       font-size: 16px;
       color: var(--muted);
       line-height: 1.9;
       font-weight: 300;
     }
-
     .about-body strong {
       color: var(--text);
       font-weight: 500;
     }
-
     .circle-quote {
       margin-top: 28px;
       padding: 20px 24px;
@@ -351,13 +309,11 @@
       color: var(--text);
       line-height: 1.8;
     }
-
     .about-cards {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
-
     .about-card {
       background: white;
       border-radius: 20px;
@@ -369,12 +325,10 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 1px solid rgba(244,194,119,0.2);
     }
-
     .about-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 40px rgba(0,0,0,0.1);
     }
-
     .about-card-icon {
       font-size: 28px;
       flex-shrink: 0;
@@ -386,33 +340,28 @@
       align-items: center;
       justify-content: center;
     }
-
     .about-card h3 {
       font-size: 18px;
       font-weight: 600;
       color: var(--dark);
       margin-bottom: 6px;
     }
-
     .about-card p {
       font-size: 13.5px;
       color: var(--muted);
       line-height: 1.7;
     }
-
     /* ── WELLBEING SECTION ── */
     .wellbeing-section {
       background: var(--amber-light);
       padding: 100px 40px;
       position: relative;
     }
-
     .section-header {
       text-align: center;
       max-width: 600px;
       margin: 0 auto 60px;
     }
-
     .section-header h2 {
       font-size: clamp(34px, 4vw, 52px);
       font-weight: 300;
@@ -420,97 +369,84 @@
       line-height: 1.25;
       margin-bottom: 14px;
     }
-
     .section-header p {
       font-size: 15px;
       color: var(--muted);
       line-height: 1.8;
     }
 
-    .wellbeing-form-wrap {
-      max-width: 800px;
+    /* ── CONVERSATIONAL QUESTION FORM ── */
+    .qform-wrap {
+      max-width: 600px;
       margin: 0 auto;
       background: white;
       border-radius: 28px;
-      padding: 48px;
       box-shadow: 0 8px 60px rgba(0,0,0,0.08);
       border: 1px solid rgba(244,194,119,0.3);
+      overflow: hidden;
+      position: relative;
+      height: 380px;
     }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 24px;
+    .qform-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
     }
-
-    .form-group { display: flex; flex-direction: column; }
-    .form-group.full { grid-column: 1 / -1; }
-
-    .form-group label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
+    .qform-slide {
+      min-width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+    .qform-emoji { font-size: 40px; margin-bottom: 18px; }
+    .qform-slide h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
       color: var(--dark);
-      margin-bottom: 8px;
-      text-transform: uppercase;
+      margin-bottom: 28px;
+      line-height: 1.3;
     }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
+    .qform-input {
+      width: 100%;
+      max-width: 360px;
       border: 1.5px solid #e5e7eb;
       border-radius: 12px;
-      padding: 12px 16px;
-      font-size: 14px;
+      padding: 14px 18px;
+      font-size: 15px;
       font-family: 'DM Sans', sans-serif;
       color: var(--text);
       background: #fafafa;
-      transition: border-color 0.2s, box-shadow 0.2s;
       outline: none;
-      width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      text-align: center;
     }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
+    .qform-input:focus {
       border-color: var(--amber);
       box-shadow: 0 0 0 3px rgba(244,194,119,0.15);
       background: white;
     }
-
-    .form-group textarea { resize: none; }
-
-    .submit-btn {
-      width: 100%;
-      padding: 16px;
+    .qform-textarea { resize: none; text-align: left; }
+    .qform-next {
+      margin-top: 26px;
+      padding: 13px 32px;
       background: var(--dark);
       color: white;
       border: none;
-      border-radius: 14px;
-      font-size: 14px;
+      border-radius: 100px;
+      font-size: 13px;
       font-weight: 600;
-      font-family: 'DM Sans', sans-serif;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
       cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 8px;
-      position: relative;
-      overflow: hidden;
+      transition: background 0.3s ease;
     }
-
-    .submit-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, var(--amber-deep), var(--amber));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .submit-btn:hover::before { opacity: 1; }
-    .submit-btn span { position: relative; z-index: 1; }
+    .qform-next:hover { background: var(--amber-deep); }
 
     /* ── RESULT CARD ── */
     .result-card {
@@ -523,16 +459,13 @@
       border: 1px solid rgba(244,194,119,0.3);
       display: none;
     }
-
     .result-card.visible { display: block; }
-
     .result-card h3 {
       font-size: 32px;
       font-weight: 400;
       color: var(--dark);
       margin-bottom: 8px;
     }
-
     .result-summary {
       font-size: 15px;
       color: var(--muted);
@@ -541,13 +474,11 @@
       padding-bottom: 24px;
       border-bottom: 1px solid #f3f4f6;
     }
-
     .plan-section {
       border-radius: 16px;
       padding: 24px;
       margin-bottom: 16px;
     }
-
     .plan-section h4 {
       font-family: 'DM Sans', sans-serif;
       font-size: 14px;
@@ -557,9 +488,7 @@
       color: var(--dark);
       margin-bottom: 14px;
     }
-
     .plan-section ul { list-style: none; }
-
     .plan-section li {
       font-size: 14px;
       color: var(--text);
@@ -567,15 +496,12 @@
       border-bottom: 1px solid rgba(0,0,0,0.05);
       line-height: 1.7;
     }
-
     .plan-section li:last-child { border-bottom: none; }
-
     /* ── FOOTER ── */
     .footer {
       background: var(--amber);
       padding: 32px 40px;
     }
-
     .footer-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -584,14 +510,12 @@
       align-items: center;
       gap: 16px;
     }
-
     .footer-divider {
       width: 100%;
       height: 1px;
       background: rgba(255,255,255,0.4);
       margin-bottom: 4px;
     }
-
     .footer-quote {
       font-family: 'Cormorant Garamond', serif;
       font-size: 16px;
@@ -601,7 +525,6 @@
       max-width: 600px;
       line-height: 1.6;
     }
-
     .footer-tag {
       font-size: 11px;
       letter-spacing: 3px;
@@ -609,27 +532,22 @@
       color: rgba(26,26,26,0.6);
       font-weight: 600;
     }
-
     .footer-links {
       display: flex;
       gap: 32px;
       align-items: center;
     }
-
     .footer-links a {
       font-size: 13px;
       color: rgba(26,26,26,0.7);
       text-decoration: none;
       transition: color 0.2s;
     }
-
     .footer-links a:hover { color: var(--dark); }
-
     .footer-copy {
       font-size: 12px;
       color: rgba(26,26,26,0.5);
     }
-
     /* ── FLOATING BUTTONS ── */
     .float-btn {
       position: fixed;
@@ -645,25 +563,21 @@
       border: none;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
     .float-btn:hover {
       transform: scale(1.1);
     }
-
     #chat-btn {
       bottom: 30px;
       right: 25px;
       background: var(--dark);
       box-shadow: 0 4px 20px rgba(26,26,26,0.3);
     }
-
     #contact-btn {
       bottom: 94px;
       right: 25px;
       background: var(--amber);
       box-shadow: 0 4px 20px rgba(244,194,119,0.4);
     }
-
     /* ── CHATBOX ── */
     .chatbox {
       display: none;
@@ -678,7 +592,6 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.15);
       border: 1px solid rgba(0,0,0,0.06);
     }
-
     .chatbox-header {
       background: var(--dark);
       color: white;
@@ -690,7 +603,6 @@
       align-items: center;
       gap: 10px;
     }
-
     .chatbox-header::before {
       content: '';
       width: 8px;
@@ -699,7 +611,6 @@
       background: #22c55e;
       flex-shrink: 0;
     }
-
     #messages {
       height: 240px;
       overflow-y: auto;
@@ -709,9 +620,7 @@
       gap: 10px;
       background: #fafafa;
     }
-
     .msg-wrap { display: flex; flex-direction: column; gap: 3px; }
-
     .msg-sender {
       font-size: 10px;
       font-weight: 600;
@@ -719,7 +628,6 @@
       text-transform: uppercase;
       color: var(--muted);
     }
-
     .msg-bubble {
       padding: 10px 14px;
       border-radius: 14px;
@@ -728,21 +636,18 @@
       max-width: 90%;
       white-space: pre-wrap;
     }
-
     .msg-bubble.user {
       background: var(--dark);
       color: white;
       border-bottom-right-radius: 4px;
       align-self: flex-end;
     }
-
     .msg-bubble.bot {
       background: white;
       color: var(--text);
       border: 1px solid #e5e7eb;
       border-bottom-left-radius: 4px;
     }
-
     #userInput {
       width: 100%;
       padding: 14px 18px;
@@ -753,9 +658,7 @@
       font-family: 'DM Sans', sans-serif;
       background: white;
     }
-
     #userInput::placeholder { color: #c0c0c0; }
-
     /* ── CONTACT POPUP ── */
     .contact-popup {
       display: none;
@@ -770,7 +673,6 @@
       width: 200px;
       overflow: hidden;
     }
-
     .contact-popup-header {
       background: var(--amber);
       padding: 12px 16px;
@@ -780,7 +682,6 @@
       color: var(--dark);
       text-transform: uppercase;
     }
-
     .contact-popup a {
       display: flex;
       align-items: center;
@@ -792,10 +693,8 @@
       transition: background 0.2s;
       border-bottom: 1px solid #f5f5f5;
     }
-
     .contact-popup a:last-child { border-bottom: none; }
     .contact-popup a:hover { background: #fafafa; }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .navbar { padding: 16px 20px; }
@@ -805,8 +704,9 @@
       .about-section { padding: 80px 24px; }
       .about-section::before { font-size: 120px; }
       .wellbeing-section { padding: 80px 20px; }
-      .wellbeing-form-wrap { padding: 28px 20px; }
-      .form-grid { grid-template-columns: 1fr; }
+      .qform-wrap { height: 420px; margin: 0 16px; }
+      .qform-slide { padding: 28px 20px; }
+      .qform-slide h3 { font-size: 21px; }
       .result-card { padding: 28px 20px; margin: 24px 0 0; }
       .footer { padding: 24px 20px; }
       .footer-links { gap: 20px; }
@@ -814,27 +714,23 @@
   </style>
 </head>
 <body>
- 
+
 <script>
   const loggedIn = localStorage.getItem("loggedIn");
   if (!loggedIn) {
     document.addEventListener("DOMContentLoaded", function() {
-      // About, Features, Footer sab hide karo
       const about = document.getElementById("about");
       const features = document.getElementById("features");
       const contact = document.getElementById("contact");
       const floatBtns = document.querySelectorAll(".float-btn");
       const chatbox = document.getElementById("chatbox");
       const contactPopup = document.getElementById("contact-popup");
-
       if (about) about.style.display = "none";
       if (features) features.style.display = "none";
       if (contact) contact.style.display = "none";
       floatBtns.forEach(btn => btn.style.display = "none");
       if (chatbox) chatbox.style.display = "none";
       if (contactPopup) contactPopup.style.display = "none";
-
-      // Hero par ek message aur signup button dikhao
       const heroContent = document.querySelector(".hero-content");
       if (heroContent) {
         const loginPrompt = document.createElement("div");
@@ -852,10 +748,10 @@
     });
   }
 </script>
+
 <!-- ── NAVBAR ── -->
 <nav class="navbar" id="navbar">
   <div class="brand">More Than <em style="font-style:italic; color:var(--amber);">Living</em></div>
-
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
@@ -870,12 +766,10 @@
       </a>
     </li>
   </ul>
-
   <button class="hamburger" id="menu-btn" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
-
 <div class="mobile-menu" id="mobile-menu">
   <a href="#home">Home</a>
   <a href="#about">About</a>
@@ -884,27 +778,20 @@
   <a href="#contact">Contact</a>
   <a id="nav-cta-mobile" href="login.html" style="color:var(--amber); font-weight:600;">Login / Sign Up</a>
 </div>
-
 <script>
   const menuBtn = document.getElementById("menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
-
   menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("open"));
-
   window.addEventListener("scroll", () => {
     document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 60);
   });
-
   document.querySelectorAll('.mobile-menu a').forEach(a => {
     a.addEventListener('click', () => mobileMenu.classList.remove('open'));
   });
-
-  // Login state check
   const isLoggedIn = localStorage.getItem("loggedIn");
   const userEmail = localStorage.getItem("userEmail");
   const navCta = document.getElementById("nav-cta");
   const navCtaMobile = document.getElementById("nav-cta-mobile");
-
   if (isLoggedIn) {
     if (navCta) {
       navCta.textContent = "👤 " + userEmail;
@@ -938,7 +825,6 @@
 <!-- ── ABOUT SECTION ── -->
 <section id="about" class="about-section">
   <div class="about-grid">
-
     <div>
       <span class="section-tag">✦ About LifeTrack</span>
       <h2 class="about-heading">Take a moment<br>for <em>yourself</em></h2>
@@ -950,7 +836,6 @@
         "Your circle shapes your destiny — choose people who are spiritual, ambitious, and growth-driven. No such circle yet? I'm right here for you. 🌿"
       </div>
     </div>
-
     <div class="about-cards">
       <div class="about-card">
         <div class="about-card-icon">🌿</div>
@@ -974,65 +859,84 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ── WELLBEING SECTION ── -->
+<!-- ── WELLBEING SECTION (CONVERSATIONAL QUESTIONS) ── -->
 <section id="features" class="wellbeing-section">
   <div class="section-header">
     <span class="section-tag">✦ Your Wellness Plan</span>
     <h2>Daily Reflection &amp; <em>Wellbeing</em></h2>
-    <p>Share a bit about your routine and current state of mind to receive a personalized daily wellness plan.</p>
+    <p>Answer a few honest questions. We'll turn them into a plan made just for you.</p>
   </div>
 
-  <div class="wellbeing-form-wrap">
-    <form id="wellbeing-form">
-      <div class="form-grid">
-        <div class="form-group">
-          <label for="wakeTime">Wake up time</label>
-          <input id="wakeTime" type="time" required>
-        </div>
-        <div class="form-group">
-          <label for="sleepTime">Sleep time</label>
-          <input id="sleepTime" type="time" required>
-        </div>
-        <div class="form-group full">
-          <label for="firstAction">First thing you do after waking up</label>
-          <input id="firstAction" type="text" placeholder="e.g. Check phone, drink water, pray, stretch..." required>
-        </div>
-        <div class="form-group">
-          <label for="junkFood">Junk food per week (times)</label>
-          <input id="junkFood" type="number" min="0" max="50" placeholder="0 – 50" required>
-        </div>
-        <div class="form-group">
-          <label for="hobby">Your hobby (if any)</label>
-          <input id="hobby" type="text" placeholder="e.g. Reading, painting, music...">
-        </div>
-        <div class="form-group full">
-          <label for="loveMost">What do you love most in life?</label>
-          <input id="loveMost" type="text" placeholder="e.g. Family, career, peace, creativity...">
-        </div>
-        <div class="form-group full">
-          <label for="problemType">What kind of issue are you facing?</label>
-          <select id="problemType" required>
-            <option value="">Select an option</option>
-            <option value="work">Work / Job stress</option>
-            <option value="student">Student life / Exam pressure</option>
-            <option value="family">Family issues</option>
-            <option value="relationship">Love life / Relationship issues</option>
-            <option value="other">Other personal challenges</option>
-          </select>
-        </div>
-        <div class="form-group full">
-          <label for="problemDetails">Share your problem in detail</label>
-          <textarea id="problemDetails" rows="5" placeholder="Write what is bothering you. You can express anything here — this is your safe space." required></textarea>
-        </div>
+  <div class="qform-wrap" id="qform-wrap">
+    <div class="qform-track" id="qform-track">
+
+      <div class="qform-slide" data-index="0">
+        <span class="qform-emoji">🌅</span>
+        <h3>What time do you wake up?</h3>
+        <input type="time" id="wakeTime" class="qform-input">
+        <button class="qform-next" onclick="goNext(0)">Continue →</button>
       </div>
-      <button type="submit" class="submit-btn">
-        <span>Get My Personalized Wellness Plan ✦</span>
-      </button>
-    </form>
+
+      <div class="qform-slide" data-index="1">
+        <span class="qform-emoji">🌙</span>
+        <h3>What time do you sleep?</h3>
+        <input type="time" id="sleepTime" class="qform-input">
+        <button class="qform-next" onclick="goNext(1)">Continue →</button>
+      </div>
+
+      <div class="qform-slide" data-index="2">
+        <span class="qform-emoji">☀️</span>
+        <h3>First thing you do after waking up?</h3>
+        <input type="text" id="firstAction" class="qform-input" placeholder="Check phone, drink water, pray, stretch...">
+        <button class="qform-next" onclick="goNext(2)">Continue →</button>
+      </div>
+
+      <div class="qform-slide" data-index="3">
+        <span class="qform-emoji">🍔</span>
+        <h3>How many times a week do you eat junk food?</h3>
+        <input type="number" id="junkFood" class="qform-input" min="0" max="50" placeholder="0 – 50">
+        <button class="qform-next" onclick="goNext(3)">Continue →</button>
+      </div>
+
+      <div class="qform-slide" data-index="4">
+        <span class="qform-emoji">🎨</span>
+        <h3>Do you have a hobby?</h3>
+        <input type="text" id="hobby" class="qform-input" placeholder="Reading, painting, music... (optional)">
+        <button class="qform-next" onclick="goNext(4)">Continue →</button>
+      </div>
+
+      <div class="qform-slide" data-index="5">
+        <span class="qform-emoji">💜</span>
+        <h3>What do you love most in life?</h3>
+        <input type="text" id="loveMost" class="qform-input" placeholder="Family, career, peace, creativity...">
+        <button class="qform-next" onclick="goNext(5)">Continue →</button>
+      </div>
+
+      <div class="qform-slide" data-index="6">
+        <span class="qform-emoji">🎯</span>
+        <h3>What kind of issue are you facing right now?</h3>
+        <select id="problemType" class="qform-input">
+          <option value="">Select an option</option>
+          <option value="work">Work / Job stress</option>
+          <option value="student">Student life / Exam pressure</option>
+          <option value="family">Family issues</option>
+          <option value="relationship">Love life / Relationship issues</option>
+          <option value="other">Other personal challenges</option>
+        </select>
+        <button class="qform-next" onclick="goNext(6)">Continue →</button>
+      </div>
+
+      <div class="qform-slide" data-index="7">
+        <span class="qform-emoji">📝</span>
+        <h3>Tell us more — what's bothering you?</h3>
+        <textarea id="problemDetails" class="qform-input qform-textarea" rows="4" placeholder="This is your safe space. Write freely..."></textarea>
+        <button class="qform-next" onclick="submitWellbeing()">Get My Plan ✦</button>
+      </div>
+
+    </div>
   </div>
 
   <div class="result-card" id="result-card">
@@ -1046,7 +950,13 @@
 </section>
 
 <script>
-  const form = document.getElementById("wellbeing-form");
+  const track = document.getElementById("qform-track");
+
+  function goNext(currentIndex) {
+    const nextIndex = currentIndex + 1;
+    track.style.transform = `translateX(-${nextIndex * 100}%)`;
+  }
+
   const resultCard = document.getElementById("result-card");
   const resultSummary = document.getElementById("result-summary");
   const resultTips = document.getElementById("result-tips");
@@ -1064,9 +974,7 @@
     return d / 60;
   }
 
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
-
+  function submitWellbeing() {
     const wakeTime = document.getElementById("wakeTime").value;
     const sleepTime = document.getElementById("sleepTime").value;
     const firstAction = document.getElementById("firstAction").value.trim().toLowerCase();
@@ -1089,61 +997,60 @@
       morningRoutine.push("📵 No phone for the first 30 minutes after waking. Your mind is fresh — protect it.");
     }
     morningRoutine.push("💧 First thing: drink a full glass of warm water. It wakes your body from inside.");
-    morningRoutine.push("🙏 Spend 5–10 minutes chanting or saying positive affirmations out loud. What you speak in the morning sets the tone for your entire day.");
+    morningRoutine.push("🙏 Spend 5–10 minutes chanting or saying positive affirmations out loud.");
     morningRoutine.push("🧘 Do 10 minutes of light stretching or breathing — inhale 4 sec, hold 4, exhale 4.");
     morningRoutine.push("☀️ Get 10 minutes of natural sunlight. Step outside or sit near a window.");
 
     if (hrs < 6.5) {
-      eveningRoutine.push("😴 You are sleeping less than 6.5 hours — this is affecting your mood, focus, and health. Try to sleep 30 minutes earlier every week until you reach 7–8 hours.");
+      eveningRoutine.push("😴 You are sleeping less than 6.5 hours — try to sleep 30 minutes earlier every week until you reach 7–8 hours.");
     } else if (hrs > 8.5) {
-      eveningRoutine.push("⏰ You are sleeping more than 8.5 hours — oversleeping can cause fatigue. Set a fixed wake-up time and stick to it.");
+      eveningRoutine.push("⏰ You are sleeping more than 8.5 hours — set a fixed wake-up time and stick to it.");
     } else {
-      eveningRoutine.push("✅ Your sleep duration is healthy! Keep this consistency going — your body loves routine.");
+      eveningRoutine.push("✅ Your sleep duration is healthy! Keep this consistency going.");
     }
-    eveningRoutine.push("📵 Stop using screens 30 minutes before sleeping — blue light disrupts your sleep quality.");
-    eveningRoutine.push("📓 Before sleeping, write 3 things you are grateful for today. This shifts your mind to a positive state.");
-    eveningRoutine.push("🙏 End your day with positive affirmations or chanting — your subconscious works on it all night.");
-    eveningRoutine.push("🌙 Keep your room dark, cool, and quiet. Your sleep environment matters deeply.");
+    eveningRoutine.push("📵 Stop using screens 30 minutes before sleeping.");
+    eveningRoutine.push("📓 Before sleeping, write 3 things you are grateful for today.");
+    eveningRoutine.push("🙏 End your day with positive affirmations or chanting.");
+    eveningRoutine.push("🌙 Keep your room dark, cool, and quiet.");
 
     if (junkFood >= 3) {
-      dailyHabits.push("🥗 You are eating junk food " + junkFood + " times a week — try replacing at least 2 with home-cooked meals. Your food is your fuel.");
-      dailyHabits.push("🍎 Add one fruit and one vegetable to your day — small steps create big changes.");
+      dailyHabits.push("🥗 You are eating junk food " + junkFood + " times a week — try replacing at least 2 with home-cooked meals.");
+      dailyHabits.push("🍎 Add one fruit and one vegetable to your day.");
     } else {
-      dailyHabits.push("🥗 Your diet is fairly balanced. Stay consistent and keep hydrating throughout the day.");
+      dailyHabits.push("🥗 Your diet is fairly balanced. Stay consistent and keep hydrating.");
     }
     if (!hobby) {
-      dailyHabits.push("🎨 You don't have a hobby right now — try to find one thing you enjoy doing just for yourself, 20–30 minutes a day.");
+      dailyHabits.push("🎨 You don't have a hobby right now — try to find one thing you enjoy doing for yourself, 20–30 minutes a day.");
     } else {
-      dailyHabits.push("🎨 Your hobby (" + hobby + ") is your mental reset — schedule it like an important meeting. Non-negotiable.");
+      dailyHabits.push("🎨 Your hobby (" + hobby + ") is your mental reset — schedule it like an important meeting.");
     }
-    dailyHabits.push("🚶 Walk for at least 20 minutes daily — outside if possible. Movement is medicine.");
-    dailyHabits.push("📵 Take one 'no social media' hour every day — use that time purely for yourself.");
-    dailyHabits.push("💬 Talk to at least one positive, growth-driven person every day. Your circle shapes your energy.");
+    dailyHabits.push("🚶 Walk for at least 20 minutes daily — outside if possible.");
+    dailyHabits.push("📵 Take one 'no social media' hour every day.");
+    dailyHabits.push("💬 Talk to at least one positive, growth-driven person every day.");
 
     if (problemType === "work") {
-      problemTip.push("💼 Divide your day into 3 focused blocks of 90 minutes with 15 minute breaks. After work hours — fully disconnect.");
-      problemTip.push("📝 Every morning write your top 3 work priorities only. Finish one before starting the next.");
+      problemTip.push("💼 Divide your day into 3 focused blocks of 90 minutes with 15 minute breaks.");
+      problemTip.push("📝 Every morning write your top 3 work priorities only.");
     } else if (problemType === "student") {
-      problemTip.push("📚 Use the 45-10 method — study for 45 minutes, take a 10 minute real break (no phone). Repeat.");
-      problemTip.push("📝 Every night write only 3 tasks for tomorrow. This reduces overwhelm and gives clear direction.");
-      problemTip.push("🧠 Revise what you studied before sleeping — your brain consolidates memory during sleep.");
+      problemTip.push("📚 Use the 45-10 method — study 45 minutes, take a 10 minute real break.");
+      problemTip.push("📝 Every night write only 3 tasks for tomorrow.");
+      problemTip.push("🧠 Revise what you studied before sleeping.");
     } else if (problemType === "family") {
-      problemTip.push("🏠 Choose one calm time each day to communicate — not when emotions are high. Speak about how YOU feel, not what others did wrong.");
-      problemTip.push("🙏 You cannot control others, only your response. Focus on your own peace first.");
+      problemTip.push("🏠 Choose one calm time each day to communicate — speak about how YOU feel.");
+      problemTip.push("🙏 You cannot control others, only your response.");
     } else if (problemType === "relationship") {
-      problemTip.push("💛 Before any difficult conversation, write your feelings down first. This helps you speak clearly without reacting emotionally.");
-      problemTip.push("🌿 Give yourself and the other person space to process. Not everything needs to be solved immediately.");
+      problemTip.push("💛 Before any difficult conversation, write your feelings down first.");
+      problemTip.push("🌿 Give yourself and the other person space to process.");
     } else {
-      problemTip.push("🌱 Break your challenge into 3 levels: What can I do TODAY? THIS WEEK? THIS MONTH? Focus only on today first.");
+      problemTip.push("🌱 Break your challenge into 3 levels: TODAY, THIS WEEK, THIS MONTH.");
     }
 
     const coreValue = loveMost || "growth and peace";
-    affirmation.push("💜 You love " + coreValue + " — let that be your anchor. On hard days, come back to what truly matters to you.");
-    affirmation.push("🌟 You are a work in progress and that is perfectly okay. Every small step today is building the version of you that you are becoming.");
+    affirmation.push("💜 You love " + coreValue + " — let that be your anchor.");
+    affirmation.push("🌟 You are a work in progress and that is perfectly okay.");
     affirmation.push("🙏 Say this every morning: 'I am growing. I am healing. I am enough. Today I choose peace.'");
 
-    const snippet = problemDetails.length > 100 ? problemDetails.slice(0, 100) + "..." : problemDetails;
-    resultSummary.innerHTML = `Based on everything you shared, here is your <strong>personalized daily wellness plan</strong>. This is not just advice — this is a lifestyle you can start building <strong>from today</strong>. Small consistent steps will change everything. 🌿`;
+    resultSummary.innerHTML = `Based on everything you shared, here is your <strong>personalized daily wellness plan</strong>. This is not just advice — this is a lifestyle you can start building <strong>from today</strong>. 🌿`;
 
     resultTips.innerHTML = "";
 
@@ -1159,11 +1066,9 @@
       const div = document.createElement("div");
       div.className = "plan-section";
       div.style.background = s.color;
-
       const h4 = document.createElement("h4");
       h4.textContent = s.title;
       div.appendChild(h4);
-
       const ul = document.createElement("ul");
       s.items.forEach(function(item) {
         const li = document.createElement("li");
@@ -1174,9 +1079,10 @@
       resultTips.appendChild(div);
     });
 
+    document.getElementById("qform-wrap").style.display = "none";
     resultCard.classList.add("visible");
     resultCard.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
+  }
 </script>
 
 <!-- ── FOOTER ── -->
@@ -1194,7 +1100,6 @@
 
 <!-- ── FLOATING CONTACT BUTTON ── -->
 <button class="float-btn" id="contact-btn" aria-label="Contact">📬</button>
-
 <div class="contact-popup" id="contact-popup">
   <div class="contact-popup-header">Get in touch</div>
   <a href="mailto:aayushimohanpersonal@gmail.com">📧 Email Us</a>
@@ -1203,34 +1108,27 @@
 
 <!-- ── FLOATING CHAT BUTTON ── -->
 <button class="float-btn" id="chat-btn" aria-label="Chat">💬</button>
-
 <div class="chatbox" id="chatbox">
   <div class="chatbox-header">LifeTrack Assistant</div>
   <div id="messages"></div>
   <input id="userInput" type="text" placeholder="Type a message and press Enter...">
 </div>
-
 <script>
-  // ── CONTACT POPUP ──
   const contactBtn = document.getElementById("contact-btn");
   const contactPopup = document.getElementById("contact-popup");
   contactBtn.onclick = () => {
     contactPopup.style.display = contactPopup.style.display === "block" ? "none" : "block";
   };
-
-  // ── CHATBOX ──
   const chatBtn = document.getElementById("chat-btn");
   const chatbox = document.getElementById("chatbox");
   const input = document.getElementById("userInput");
   const messages = document.getElementById("messages");
-
   chatBtn.onclick = () => {
     chatbox.style.display = chatbox.style.display === "block" ? "none" : "block";
     if (chatbox.style.display === "block" && messages.children.length === 0) {
       addMessage("bot", "Hey there 🌿 I'm your LifeTrack wellness companion. How are you feeling today?");
     }
   };
-
   input.addEventListener("keypress", async function(e) {
     if (e.key !== "Enter") return;
     const text = input.value.trim();
@@ -1244,26 +1142,21 @@
       addMessage("bot", reply);
     }
   });
-
   function addMessage(type, text) {
     const wrap = document.createElement("div");
     wrap.className = "msg-wrap";
     wrap.style.alignItems = type === "user" ? "flex-end" : "flex-start";
-
     const sender = document.createElement("div");
     sender.className = "msg-sender";
     sender.textContent = type === "user" ? "You" : "LifeTrack";
-
     const bubble = document.createElement("div");
     bubble.className = "msg-bubble " + type;
     bubble.textContent = text;
-
     wrap.appendChild(sender);
     wrap.appendChild(bubble);
     messages.appendChild(wrap);
     messages.scrollTop = messages.scrollHeight;
   }
-
   async function getBotReply(message) {
     try {
       const res = await fetch("https://lifetrack-api-3jzf.onrender.com/chat", {
@@ -1277,7 +1170,6 @@
       return "Server not connected. Please start the backend 🔌";
     }
   }
-
   function showFeedbackForm() {
     const wrap = document.createElement("div");
     wrap.style.cssText = "padding:12px; background:#f9fafb; border-radius:12px; margin-top:8px;";
@@ -1292,7 +1184,6 @@
     messages.appendChild(wrap);
     messages.scrollTop = messages.scrollHeight;
   }
-
   async function submitFeedback() {
     const name = document.getElementById("fb-name").value.trim();
     const email = document.getElementById("fb-email").value.trim();
@@ -1314,6 +1205,5 @@
     }
   }
 </script>
-
 </body>
 </html>
