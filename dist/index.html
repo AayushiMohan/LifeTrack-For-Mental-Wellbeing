@@ -850,12 +850,14 @@
     document.addEventListener("DOMContentLoaded", function() {
       const about = document.getElementById("about");
       const features = document.getElementById("features");
+      const resources = document.getElementById("resources");
       const contact = document.getElementById("contact");
       const floatBtns = document.querySelectorAll(".float-btn");
       const chatbox = document.getElementById("chatbox");
       const contactPopup = document.getElementById("contact-popup");
       if (about) about.style.display = "none";
       if (features) features.style.display = "none";
+      if (resources) resources.style.display = "none";
       if (contact) contact.style.display = "none";
       floatBtns.forEach(btn => btn.style.display = "none");
       if (chatbox) chatbox.style.display = "none";
