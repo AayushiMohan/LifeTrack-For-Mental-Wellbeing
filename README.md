@@ -1,5 +1,5 @@
 # 🌿 LifeTrack — More Than Living   
-🌐 **Live App:** https://lifetrack1440.netlify.app/
+🌐 **Live App:** https://life-track-for-mental-wellbeing.vercel.app/
 
 > *"Your circle shapes your destiny — choose people who are spiritual, ambitious, and growth-driven."*
 
